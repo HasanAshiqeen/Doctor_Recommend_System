@@ -99,6 +99,19 @@ public class Main {
         doctor7.put("rating", 4.9);
         database.add(doctor7);
 
+        HashMap<String, Object> doctor8 = new HashMap<>();
+        doctor8.put("name", "Shariq Joel");
+        doctor8.put("specialty", "Pediatrics");
+        doctor8.put("symptoms", "Fever");
+        doctor8.put("gender", "Female");
+        doctor8.put("min_age", 0);
+        doctor8.put("max_age", 18);
+        doctor8.put("location", "246 Main St.");
+        doctor8.put("phone", "555-2345");
+        doctor8.put("rating", 4.7);
+        database.add(doctor8);
+
+
         String symptoms = "Fever";
         String gender = "Female";
         int age = 15;
@@ -123,11 +136,20 @@ public class Main {
 
         database.removeAll(toRemove);
 
-        if (database.size() == 1) {
-            HashMap<String, Object> doctor = database.get(0);
-            String name = (String) doctor.get("name");
-            String phone = (String) doctor.get("phone");
-            System.out.println("Based on your preferences, we recommend Dr. " + name + ". You can book an appointment with him/her at " + phone + ".");
+        if (database.size() > 1) {
+
+            for (HashMap<String, Object> doctor : database) {
+                String name = (String) doctor.get("name");
+                String phone = (String) doctor.get("phone");
+
+                System.out.println("Based on your preferences, we recommend Dr. " + name + ". You can book an appointment with him/her at " + phone + ".");
+            }
+
+            //
+//            HashMap<String, Object> doctor = database.get(0);
+//            String name = (String) doctor.get("name");
+//            String phone = (String) doctor.get("phone");
+//            System.out.println("Based on your preferences, we recommend Dr. " + name + ". You can book an appointment with him/her at " + phone + ".");
         } else if (database.isEmpty()) {
             System.out.println("Sorry, we couldn't find any doctors that match your requirements. Please try again with different preferences.");
         }
